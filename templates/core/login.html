@@ -1,0 +1,9 @@
+{% extends 'base.html' %}{% block content %}
+<section class="login"><div class="book">📖</div><h1>ALCOLENRI</h1><p>Gestión integral de centros educativos</p>
+{% if error %}<div class="error">{{error}}</div>{% endif %}
+<div class="tabs"><a href="?tipo=admin">Administrador</a><a href="?tipo=profesor">Profesor</a><a href="?tipo=estudiante">Estudiante</a></div>
+<form method="post">{% csrf_token %}<input type="hidden" name="mode" value="{{mode}}">
+{% if mode == 'admin' %}<label>Usuario</label><input name="code" placeholder="maligui" required><label>Contraseña</label><input name="password" type="password" required>
+{% elif mode == 'profesor' %}<label>Código de profesor</label><input name="code" placeholder="PROF-..." required><p class="hint">El profesor accede con el mismo código que utiliza en el .exe.</p>
+{% else %}<label>Código de estudiante</label><input name="code" placeholder="EST-..." required><p class="hint">El estudiante accede con el mismo código que utiliza en el .exe.</p>{% endif %}
+<button>INICIAR SESIÓN</button></form></section>{% endblock %}

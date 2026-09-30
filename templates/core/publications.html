@@ -1,0 +1,1 @@
+{% extends 'base.html' %}{% block content %}<h1>Publicaciones</h1>{% for p in publications %}<section class="panel"><h2>{{p.title}}</h2><p>{{p.content}}</p><small>{{p.date}}</small></section>{% empty %}<p>No hay publicaciones.</p>{% endfor %}{% endblock %}
